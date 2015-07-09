@@ -197,6 +197,18 @@
                 }
             });
         },
+        updateMessages: function (messages, summary) {
+            var $form = $(this);
+            var data = $form.data('yiiActiveForm');
+            $.each(data.attributes, function () {
+                if (!this.cancelled) {
+                    updateInput($form, this, messages);
+                }
+            });
+            if (summary) {
+                updateSummary($form, messages);
+            }
+        },
 
         // add a new attribute to the form dynamically.
         // please refer to attributeDefaults for the structure of attribute
